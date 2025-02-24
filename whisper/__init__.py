@@ -151,6 +151,7 @@ def load_model(
     del checkpoint_file
 
     dims = ModelDimensions(**checkpoint["dims"])
+    dims.n_audio_ctx //= 2
     model = Whisper(dims)
     model.load_state_dict(checkpoint["model_state_dict"])
 
